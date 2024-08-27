@@ -131,7 +131,6 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-
         <div className="py-[100px] bg-[#F9F8FE]">
           <div className="w-[60%]">
             <ul className="lg:flex justify-between">

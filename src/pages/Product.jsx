@@ -79,8 +79,7 @@ const Product = () => {
               </div>
               <input
                 className="h-[25px] w-[60%] border-2 border-[#E7E6EF] rounded-lg "
-                type="text"
-              />
+                type="text"/>
             </div>
           </div>
         </div>

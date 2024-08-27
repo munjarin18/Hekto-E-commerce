@@ -3,7 +3,7 @@ import Container from "../components/Container";
 import Cart1 from "../assets/Cart1.png";
 import Cart2 from "../assets/Cart2.png";
 import Cart3 from "../assets/Cart3.png";
-import Cart4 from "../assets/Cart4.png";
+import cart4 from "../assets/cart4.png"
 import Cart5 from "../assets/Cart5.png";
 import { Link } from "react-router-dom";
 
@@ -168,7 +168,7 @@ const Addtocart = () => {
               <div className="flex justify-between items-center mt-[50px]">
                 <div className="w-[28%]  flex justify-between">
                   <div className="">
-                    <img src={Cart4} alt="" />
+                    <img src={cart4} alt="" />
                   </div>
                   <div className=" hidden lg:block">
                     <h3 className="font-Sans font-bold text-[12px] text-[#000]">
