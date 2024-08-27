@@ -81,9 +81,9 @@ const ProductDetails = () => {
                   $26.00
                 </h4>
               </div>
-              <h3 className="font-Sans font-bold text-[18px] text-[#0D0E43] pt-[20px]">
+              <h2 className="font-Sans font-bold text-[18px] text-[#0D0E43] pt-[20px]">
                 Color
-              </h3>
+              </h2>
               <p className="font-Sans font-semibold text-[16px] text-[#A9ACC6] pt-[20px]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                 tellus porttitor purus, et volutpat sit.
@@ -114,9 +114,18 @@ const ProductDetails = () => {
                   </h3>
                 </div>
                 <div className="flex space-x-2 text-[#151875] items-center">
-                  <CiFacebook className="w-[15px] h-[15px] rounded-full bg-[#151875] text-[#FFF]" />
-                  <AiOutlineInstagram className="w-[15px] h-[15px] rounded-full bg-[#FB2E86] text-[#FFF]" />
-                  <CiTwitter className="w-[15px] h-[15px] rounded-full bg-[#151875] text-[#FFF]" />
+                  <div className="w-[15px] h-[15px] rounded-full bg-[#151875] text-[#FFF]">
+                  <CiFacebook />
+                  </div>
+                
+                <div className="w-[15px] h-[15px] rounded-full bg-[#FB2E86] text-[#FFF]">
+                <AiOutlineInstagram  />
+                </div>
+                 
+                 <div className="w-[15px] h-[15px] rounded-full bg-[#151875] text-[#FFF]">
+                 <CiTwitter />
+                 </div>
+                  
                 </div>
               </div>
             </div>

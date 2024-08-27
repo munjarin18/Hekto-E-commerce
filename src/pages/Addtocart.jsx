@@ -5,6 +5,7 @@ import Cart2 from "../assets/Cart2.png";
 import Cart3 from "../assets/Cart3.png";
 import Cart4 from "../assets/Cart4.png";
 import Cart5 from "../assets/Cart5.png";
+import { Link } from "react-router-dom";
 
 const Addtocart = () => {
   return (
@@ -283,9 +284,12 @@ const Addtocart = () => {
                     </p>
                   </div>
                   <div className="mt-[10px]">
-                    <button className="py-[10px] px-[80px] bg-[#19D16F] mt-[50px] font-Sans font-bold text-[16px] text-[#fff] rounded-lg">
+                   <Link to='/'>
+                   <button className="py-[10px] px-[80px] bg-[#19D16F] mt-[50px] font-Sans font-bold text-[16px] text-[#fff] rounded-lg">
                       Proceed To Checkout
                     </button>
+                   </Link>
+                    
                   </div>
                 </div>
               </div>
