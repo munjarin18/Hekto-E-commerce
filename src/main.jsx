@@ -17,6 +17,7 @@ import ShopList from "./pages/ShopList";
 import Product from "./pages/Product";
 import ProductDetails from "./pages/ProductDetails";
 import Addtocart from "./pages/Addtocart";
+import { ContextApi } from "./components/ContextApi";
 
 
 let router = createBrowserRouter(
@@ -36,7 +37,9 @@ let router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+   <ContextApi>
+   <RouterProvider router={router} />
+   </ContextApi>
+   
+  
 );
