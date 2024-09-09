@@ -340,7 +340,7 @@ const Product = () => {
           </div>
 
           <div className=" lg:w-[73%] w-full">
-            <Link to="/ProductDetails">
+            <Link to="/shopGrid">
             <div className="lg:flex justify-between mt-[50px] px-3">
               <div className="lg:w-[40%] w-full">
                 <div className="">

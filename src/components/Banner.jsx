@@ -4,7 +4,7 @@ import Bann from "../assets/banner.png"
 
 const Banner = () => {
     return (
-      <section className='bg-[#F2F0FF] px-10'>
+      <section className='bg-[#F2F0FF] px-4'>
         <div className="lg:flex">
           <div className="lg:w-[15%]">
             <div className="">

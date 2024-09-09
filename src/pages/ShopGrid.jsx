@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useContext, useState} from 'react'
 import Container from "../components/Container";
 import { FaThList } from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
@@ -6,10 +6,54 @@ import shop01 from "../assets/shop01.png"
 import shop02 from "../assets/shop02.png"
 import chair01 from "../assets/get02.png"
 import { Link } from 'react-router-dom';
+import { apiData } from '../components/ContextApi';
+import Post from '../components/pagination/Post';
+import PaginationArea from '../components/pagination/PaginationArea';
+
 
 
 
 const ShopGrid = () => {
+
+  let data = useContext(apiData)
+
+  let [currentPage, setCurrentPage] = useState(1)
+  let [perPage, setPerPage] =useState(8)
+
+ let lastpage = currentPage * perPage
+ let firstpage = lastpage -  perPage
+
+ let allData = data.slice(firstpage, lastpage)
+
+
+ let pageNumber =[]
+
+
+ for( let i=0; i < Math.ceil(data.length / perPage ); i++){
+  pageNumber.push(i)
+ }
+ 
+ let paginate = (pageNumber) =>{
+  setCurrentPage(pageNumber + 1);
+   
+ }
+
+ let next = () =>{
+  if(currentPage < pageNumber.length){
+    setCurrentPage((state) => state + 1)
+  }
+  
+ }
+
+ let prev = () =>{
+  if(currentPage > 1){
+    setCurrentPage((state) => state - 1)
+  }
+ }
+ 
+ 
+ 
+
     return (
         <section className="py-[100px] px-3 bg-[#F6F5FF]">
           <Container>
@@ -77,176 +121,15 @@ const ShopGrid = () => {
               </div>
             </div>
 
-            <Link to="/ShopList">    
-            <div className="mt-[50px] lg:flex  justify-between px-3">
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop01} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Vel elit euismod</h3>
+          
+             <div className="mt-[50px] lg:flex  justify-between px-3  flex-wrap">
+              <Post allData={allData} />
+              </div>
+            
 
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop02} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[18px] text-[#0D0E43]'>Ultricies condimentum imperdiet</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop01} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Vitae suspendisse sed</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop02} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Sed at fermentum</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="mt-[50px] lg:flex justify-between px-3">
-                <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop02} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Vel elit euismod</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop01} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[18px] text-[#0D0E43]'>Ultricies condimentum imperdiet</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop02} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Vitae suspendisse sed</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop01} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Sed at fermentum</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="mt-[50px] lg:flex justify-between px-3">
-                <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop01} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Vel elit euismod</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop02} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[18px] text-[#0D0E43]'>Ultricies condimentum imperdiet</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop01} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Vitae suspendisse sed</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-                    <div className="lg:w-[24%] w-full sm:w-[50%]">
-                        <div className="py-[30px] px-[30px] bg-[#EBF4F3]">
-                            <img src={shop02} alt="" />
-                        </div>
-                        <div className=" text-center mt-[30px]">
-                            <h3 className='font-Sans font-bold text-[22px] text-[#0D0E43]'>Sed at fermentum</h3>
-
-                            <h4 className='font-Sans font-semibold text-[16px] text-[#FB2E86]'>$26.00  </h4>
-
-
-
-                        </div>
-                    </div>
-
-                </div>
-                
-               </Link>
+             <div className="text-center">
+              <PaginationArea  pageNumber={ pageNumber } paginate={paginate} currentPage={currentPage} next={next} prev={prev}  />
+             </div>
          
 
                 <div className="pt-[100px] px-3">

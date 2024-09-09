@@ -4,6 +4,7 @@ import Logo from "../assets/Logo.png";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import Contact from "../pages/Contact";
 
 const Navbar = () => {
   return (
@@ -21,8 +22,10 @@ const Navbar = () => {
                 <IoIosArrowDown />
               </li>
               <li className="flex items-center font-Sans font-semibold text-[16px] text-[#0D0E43] duration-300 ease-in-out hover:text-[#FB2E86]">
-              
-                <Link to="/ShopGrid">  Pages</Link>
+              <Link to="/Page">
+              Pages
+              </Link>
+                 
               </li>
               <li className="flex items-center font-Sans font-semibold text-[16px] text-[#0D0E43] duration-300 ease-in-out hover:text-[#FB2E86]">
                 <Link to="/Product">Products</Link>
@@ -31,10 +34,12 @@ const Navbar = () => {
                 Blog
                </li>
               <li className="flex items-center font-Sans font-semibold text-[16px] text-[#0D0E43] duration-300 ease-in-out hover:text-[#FB2E86]">
-                Shop
+              <Link to="/ShopGrid"> Shop </Link>
               </li>
               <li className="flex items-center font-Sans font-semibold text-[16px] text-[#0D0E43] duration-300 ease-in-out hover:text-[#FB2E86]">
-                Contact
+             <Link to="/Contact" >
+             Contact
+             </Link>
               </li>
             </ul>
           </div>

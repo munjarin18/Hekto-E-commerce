@@ -6,8 +6,22 @@ import Cart3 from "../assets/Cart3.png";
 import cart4 from "../assets/cart4.png"
 import Cart5 from "../assets/Cart5.png";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { productIncrement , productDecrement } from "../components/slice/productSlice";
 
 const Addtocart = () => {
+  let dispatch = useDispatch()
+  let data = useSelector((state)=>state.product.cartItem)
+
+
+  let handleIncrement = (index) =>{
+    dispatch(productIncrement(index))
+    
+  }
+  let handleDecrement = (index) =>{
+    dispatch(productDecrement(index))
+    
+ }
   return (
     <section className="py-[100px] px-3 bg-[#F6F5FF]">
       <Container>
@@ -46,36 +60,37 @@ const Addtocart = () => {
                   Total
                 </h3>
               </div>
+
+              {data.map((item, index)=>(
+                
+                
               <div className="flex justify-between items-center mt-[50px]">
-                <div className="w-[28%] flex justify-between ">
+                <div className="w-[28%] flex justify-between items-center ">
                   <div className="">
-                    <img src={Cart1} alt="" />
+                    <img className="w-[100px] h-[100px]" src={item.thumbnail} alt="" />
                   </div>
                   <div className=" hidden lg:block">
                     <h3 className="font-Sans font-bold text-[12px] text-[#000]">
-                      Ut diam consequat
+                    {item.title}
                     </h3>
                     <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Color: Brown
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Size:XL
+                    {item.brand }
                     </h3>
                   </div>
                 </div>
 
                 <div className="w-[70%] flex justify-between items-center">
-                  <h3 className="font-Sans font-bold text-[14px] text-[#0D0E43] px-10 ">
-                    $32.00
+                  <h3 className="font-Sans font-bold text-[14px] text-[#0D0E43] px-10  pb-10">
+                    ${item.price}
                   </h3>
                   <div className="">
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
+                    <button onClick={() =>handleDecrement(index)} className="font-Sans font-bold text-[20px] text-[#0D0E43]">
                       -
                     </button>
                     <button className="font-Sans font-bold text-[16px] text-[#0D0E43] px-3">
-                      1
+                    {item.qun}
                     </button>
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
+                    <button  onClick={() =>handleIncrement(index)} className="font-Sans font-bold text-[20px] text-[#0D0E43]">
                       +
                     </button>
                   </div>
@@ -84,165 +99,12 @@ const Addtocart = () => {
                   </h3>
                 </div>
               </div>
-
-              <div className=" relative after:absolute after:contain-[''] after:bottom-[-10px] after:left-0 after:h-[1px] after:w-[100%] after:bg-[#E1E1E4]" />
-              <div className="flex justify-between items-center mt-[50px]">
-                <div className="w-[28%]  flex justify-between">
-                  <div className="">
-                    <img src={Cart2} alt="" />
-                  </div>
-                  <div className=" hidden lg:block ">
-                    <h3 className="font-Sans font-bold text-[12px] text-[#000]">
-                      Ut diam consequat
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Color: Brown
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Size:XL
-                    </h3>
-                  </div>
-                </div>
-                <div className="w-[70%] flex justify-between">
-                  <h3 className="font-Sans font-bold text-[14px] text-[#0D0E43] px-10">
-                    $32.00
-                  </h3>
-                  <div className="">
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      -
-                    </button>
-                    <button className="font-Sans font-bold text-[16px] text-[#0D0E43] px-3">
-                      1
-                    </button>
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      +
-                    </button>
-                  </div>
-                  <h3 className="font-Sans font-bold text-[16px] text-[#0D0E43]">
-                    £219.00
-                  </h3>
-                </div>
-              </div>
-              <div className=" relative after:absolute after:contain-[''] after:bottom-[-10px] after:left-0 after:h-[1px] after:w-[100%] after:bg-[#E1E1E4]" />
-
-              <div className="flex justify-between items-center mt-[50px]">
-                <div className="w-[28%]  flex justify-between">
-                  <div className="">
-                    <img src={Cart3} alt="" />
-                  </div>
-                  <div className=" hidden lg:block">
-                    <h3 className="font-Sans font-bold text-[12px] text-[#000]">
-                      Ut diam consequat
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Color: Brown
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Size:XL
-                    </h3>
-                  </div>
-                </div>
-                <div className="w-[70%] flex justify-between">
-                  <h3 className="font-Sans font-bold text-[14px] text-[#0D0E43] px-10">
-                    $32.00
-                  </h3>
-                  <div className="">
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      -
-                    </button>
-                    <button className="font-Sans font-bold text-[16px] text-[#0D0E43] px-3">
-                      1
-                    </button>
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      +
-                    </button>
-                  </div>
-                  <h3 className="font-Sans font-bold text-[16px] text-[#0D0E43]">
-                    £219.00
-                  </h3>
-                </div>
-              </div>
-
-              <div className=" relative after:absolute after:contain-[''] after:bottom-[-10px] after:left-0 after:h-[1px] after:w-[100%] after:bg-[#E1E1E4]" />
-
-              <div className="flex justify-between items-center mt-[50px]">
-                <div className="w-[28%]  flex justify-between">
-                  <div className="">
-                    <img src={cart4} alt="" />
-                  </div>
-                  <div className=" hidden lg:block">
-                    <h3 className="font-Sans font-bold text-[12px] text-[#000]">
-                      Ut diam consequat
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Color: Brown
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Size:XL
-                    </h3>
-                  </div>
-                </div>
-                <div className="w-[70%] flex justify-between">
-                  <h3 className="font-Sans font-bold text-[14px] text-[#0D0E43] px-10">
-                    $32.00
-                  </h3>
-                  <div className="">
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      -
-                    </button>
-                    <button className="font-Sans font-bold text-[16px] text-[#0D0E43] px-3">
-                      1
-                    </button>
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      +
-                    </button>
-                  </div>
-                  <h3 className="font-Sans font-bold text-[16px] text-[#0D0E43]">
-                    £219.00
-                  </h3>
-                </div>
-              </div>
-              <div className=" relative after:absolute after:contain-[''] after:bottom-[-10px] after:left-0 after:h-[1px] after:w-[100%] after:bg-[#E1E1E4]" />
-
-              <div className="flex justify-between items-center mt-[50px]">
-                <div className="w-[28%]  flex justify-between">
-                  <div className="">
-                    <img src={Cart5} alt="" />
-                  </div>
-                  <div className=" hidden lg:block">
-                    <h3 className="font-Sans font-bold text-[12px] text-[#000]">
-                      Ut diam consequat
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Color: Brown
-                    </h3>
-                    <h3 className="font-Sans font-bold text-[12px] text-[#A1A8C1]">
-                      Size:XL
-                    </h3>
-                  </div>
-                </div>
-                <div className="w-[70%] flex justify-between ">
-                  <h3 className="font-Sans font-bold text-[14px] text-[#0D0E43] px-10">
-                    $32.00
-                  </h3>
-                  <div className="">
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      -
-                    </button>
-                    <button className="font-Sans font-bold text-[16px] text-[#0D0E43] px-3">
-                      1
-                    </button>
-                    <button className="font-Sans font-bold text-[20px] text-[#0D0E43]">
-                      +
-                    </button>
-                  </div>
-                  <h3 className="font-Sans font-bold text-[16px] text-[#0D0E43]">
-                    £219.00
-                  </h3>
-                </div>
-              </div>
-
-              <div className=" relative after:absolute after:contain-[''] after:bottom-[-10px] after:left-0 after:h-[1px] after:w-[100%] after:bg-[#E1E1E4]" />
+             
+            ))}
+           
+         
+             
+         
 
               <div className="flex justify-between">
                 <button className="py-[10px] px-[30px] bg-[#FB2E86] mt-[50px] font-Sans font-bold text-[16px] text-[#fff] rounded-lg">

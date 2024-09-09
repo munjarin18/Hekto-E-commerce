@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux'
 import Container from "../components/Container";
 import ProductD1 from "../assets/ProductD1.png";
 import ProductD2 from "../assets/ProductD2.png";
@@ -15,7 +16,10 @@ import ProductD6 from "../assets/ProductD6.png";
 import ProductD7 from "../assets/ProductD7.png";
 import ProductD8 from "../assets/ProductD8.png";
 import chair01 from "../assets/get02.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import { addToCart } from "../components/slice/productSlice";
+
 
 
 
@@ -23,6 +27,35 @@ import { Link } from "react-router-dom";
 
 
 const ProductDetails = () => {
+  let[singleData, setSingleData] =useState([])
+  let shopgridId = useParams();
+  let dispatch =  useDispatch();
+  console.log(shopgridId);
+
+
+  
+  
+
+  let getData = () =>{
+    axios.get(`https://dummyjson.com/products/${shopgridId.id}`).then((response)=>{
+      setSingleData(response.data);
+      
+    })
+  }
+
+  useEffect(()=>{
+    getData()
+  },[])
+  
+  console.log(singleData);
+
+  let handleAddTocart = (item) => {
+    dispatch(addToCart ({...item, qun: 1 }) )
+ 
+    
+  }
+  
+
   return (
     <section className="py-[100px] px-3 bg-[#F6F5FF]">
       <Container>
@@ -42,19 +75,18 @@ const ProductDetails = () => {
             Product Details
           </p>
         </div>
-
+      
         <div className="lg:flex justify-around mt-[50px] bg-[#F6F4FD] py-[10px] px-3">
-          <div className="lg:w-[15%] w-full">
+          {/* <div className="lg:w-[15%] w-full">
             <div className=" space-y-3">
               <img className="w-full h-[155px]" src={ProductD1} alt="" />
               <img className=" w-full h-[155px]" src={ProductD2} alt="" />
               <img className="w-full h-[155px]" src={ProductD3} alt="" />
             </div>
-          </div>
-
-          <div className="lg:w-[30%] w-full">
+          </div> */}
+          <div className="lg:w-[45%] w-full">
             <div className="">
-              <img className="w-full" src={ProductD4} alt="" />
+              <img className="w-full " src={singleData.thumbnail} alt="" />
             </div>
           </div>
 
@@ -75,21 +107,21 @@ const ProductDetails = () => {
               </div>
               <div className="flex pt-[20px] gap-2">
                 <h3 className="font-Sans font-bold text-[16px] text-[#151875]">
-                  $26.00
+                  ${singleData.price}
                 </h3>
                 <h4 className="font-Sans font-bold text-[16px] text-[#FB2E86]">
-                  $26.00
+                  ${singleData.price}
                 </h4>
               </div>
               <h2 className="font-Sans font-bold text-[18px] text-[#0D0E43] pt-[20px]">
-                Color
+              {singleData.title}
               </h2>
               <p className="font-Sans font-semibold text-[16px] text-[#A9ACC6] pt-[20px]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
                 tellus porttitor purus, et volutpat sit.
               </p>
               <div className="flex items-center  gap-2">
-                <Link to="/Addtocart">
+                <Link to="/Addtocart" onClick={()=>handleAddTocart(singleData)}>
                 
                 <button className="py-[10px] px-[25px] bg-[#A9ACC6] hover:bg-[#FB2E86] duration-300 ease-in-out mt-[40px] font-Sans font-bold text-[16px] text-[#000] rounded-lg">
                   Add To cart

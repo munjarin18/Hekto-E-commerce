@@ -9,6 +9,7 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 import Slider from "react-slick";
 import { apiData } from "./ContextApi";
+import { Link } from "react-router-dom";
 
 
 
@@ -89,13 +90,13 @@ const Featured = () => {
             Featured Products
           </h3>
         </div>
-
+        <Link to="/ShopGrid">
         <Slider className="" {...settings}>
-
+    
         {data.map((item)=>(
-         <div className="w-[24%] justify-between bg-[#F6F7FB]  pt-[2 0px] ">
+         <div className="w-[24%] justify-between  bg-[#F6F7FB]  pt-[2 0px] ">
             <div className="">
-              <img className="ml-[50%] translate-x-[-50%] h-[250px] w-[250px]"src={item.thumbnail}alt="" />
+              <img className="ml-[50%] translate-x-[-50%]  h-[250px] w-[250px]"src={item.thumbnail}alt="" />
               <div className=" relative text-center  w-[100%] py-[20px] bg-[#fff] mt-[50px] before:absolute  before:content-[''] before:bottom-0 before:right-0 before:w-[100%] before:h-[0] before:bg-[#2F1AC4] before:duration-300 before:ease-in-out before:hover:h-[100%] before:hover:text-[#fff] ">
                 <h3 className=' relative font-Sans font-bold text-[18px] text-[#FB2E86] after:absolute after:content-[""] after:top-[30px] after:left-[50%] after:translate-x-[-50%] after:h-[3px] after:w-[70%]  after:bg-[#05E6B7]'>
                   {item.title}
@@ -114,6 +115,8 @@ const Featured = () => {
           
       
         </Slider>
+       </Link>
+       
       </Container>
     </section>
   );
